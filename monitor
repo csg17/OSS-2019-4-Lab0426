@@ -1,6 +1,7 @@
 #!/bin/bash
 
 prev=a
+SPOILER="I watched Avengers: Endgame. Thanos d**s..."
 
 while ((1))
 do
@@ -9,7 +10,11 @@ do
 		cur=$( tail -n 1 log.txt )
 		if [[ $cur != $prev ]] 
 		then
-			echo $cur
+			if [ "$SPOILER" = "$cur" ]; then
+				echo "Spoiler Alert!"
+			else
+				echo $cur
+			fi
 			prev=$cur
 		fi
 	fi
